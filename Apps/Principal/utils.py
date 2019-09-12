@@ -1,4 +1,8 @@
-from .models import RedesSociales,Web, OpinionesClientes, Servicios
+from .models import RedesSociales,Web, OpinionesClientes, Servicios, Principal
+
+
+def obtenerPrincipal():
+    return Principal.objects.filter(estado = True).latest('fecha_creacion')
 
 def obtenerRedes():
     return RedesSociales.objects.filter(estado = True).latest('fecha_creacion')

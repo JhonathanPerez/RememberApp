@@ -9,19 +9,29 @@ class Inicio(ListView):
     def get(self,request,*args,**kwargs):
 
         try:
-            principal = Principal.objects.filter(
-                             estado = True,
-                             ).latest('fecha_creacion')
+            principal = obtenerPrincipal()
 
         except:
          principal = None
+
+         try:
+             redes = obtenerRedes()
+
+         except:
+             redes = None
+
+        try:
+            web = obtenerWeb()
+
+        except Exception:
+            web = None
 
         contexto = {
             'principal':principal,
             'servicios':obtenerServicios(),
             'opiniones':obtenerOpiniones(),
-            'redes':obtenerRedes(),
-            'web':obtenerWeb(),
+            'redes': redes,
+            'web':web,
         }
 
         return render(request,'index.html',contexto)
