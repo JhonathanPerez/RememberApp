@@ -12,13 +12,13 @@ DOC_CHOICES = (
 )
 
 class DatosPersonales(models.Model):
-    datid = models.AutoField(primary_key=True)
-    datnombre = models.CharField(max_length=50)
-    datapellido = models.CharField(max_length=50, blank=True, null=True)
-    datipoid = models.CharField(max_length=20, blank=True, null=True, choices=DOC_CHOICES, default='CC')
-    datnumeroid = models.CharField(max_length=20, blank=True, null=True)
-    datelefono = models.CharField(max_length=20, blank=True, null=True)
-    datcorreo = models.CharField(max_length=50, blank=True, null=True)
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50, blank=True, null=True)
+    tipoid = models.CharField(max_length=20, blank=True, null=True, choices=DOC_CHOICES, default='CC')
+    numeroid = models.CharField(max_length=20, blank=True, null=True)
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    correo = models.CharField(max_length=50, blank=True, null=True)
     foto = models.ImageField(upload_to='usuarios', default='usuarios/usuario.png')
     usuid = models.OneToOneField(User, on_delete = models.CASCADE)
 
