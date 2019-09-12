@@ -21,12 +21,12 @@ GEN_CHOICES = (
 class DatosPersonales(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
-    apellido = models.CharField('Apellido', max_length=50)
-    genero = models.CharField('Genero', max_length=20,choices=GEN_CHOICES, default='M' )
+    apellido = models.CharField('Apellido', max_length=50, null = "True")
+    genero = models.CharField('Genero', max_length=20, choices=GEN_CHOICES, default='M' )
     tipoid = models.CharField('Tipo Identificacion', max_length=20,choices=DOC_CHOICES, default='CC')
-    numeroid = models.CharField('Numero de identificacion', max_length=20)
-    telefono = models.CharField('Telefono', max_length=20)
-    correo = models.CharField('Correo', max_length=50)
+    numeroid = models.CharField('Numero de identificacion', max_length=20, null = "True")
+    telefono = models.CharField('Telefono', max_length=20, null = "True")
+    correo = models.CharField('Correo', max_length=50, null = "True")
     foto = models.ImageField('foto', upload_to='usuarios', default='usuarios/usuario.png')
     usuid = models.OneToOneField(User, on_delete = models.CASCADE)
 
