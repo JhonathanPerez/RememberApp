@@ -22,6 +22,7 @@ class DatosPersonales(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
     apellido = models.CharField('Apellido', max_length=50)
+    genero = models.CharField('Genero', max_length=20,choices=GEN_CHOICES, default='M' )
     tipoid = models.CharField('Tipo Identificacion', max_length=20,choices=DOC_CHOICES, default='CC')
     numeroid = models.CharField('Numero de identificacion', max_length=20)
     telefono = models.CharField('Telefono', max_length=20)
