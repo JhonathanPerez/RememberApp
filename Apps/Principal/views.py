@@ -8,30 +8,12 @@ class Inicio(ListView):
 
     def get(self,request,*args,**kwargs):
 
-        try:
-            principal = obtenerPrincipal()
-
-        except:
-         principal = None
-
-         try:
-             redes = obtenerRedes()
-
-         except:
-             redes = None
-
-        try:
-            web = obtenerWeb()
-
-        except Exception:
-            web = None
-
         contexto = {
-            'principal':principal,
+            'principal':obtenerPrincipal(),
             'servicios':obtenerServicios(),
             'opiniones':obtenerOpiniones(),
-            'redes': redes,
-            'web':web,
+            'redes': obtenerRedes(),
+            'web':obtenerWeb(),
         }
 
         return render(request,'index.html',contexto)
