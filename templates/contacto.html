@@ -47,21 +47,26 @@
       <div class="section-title">
 				<img src="{% static 'principal/./img/section-title-icon.png'%}" alt="#">
 				<p>Lo mejor de nosotros</p>
-				<h2>Contactenos</h2>
+				<h2>Dejanos tu mensaje!</h2>
 			</div>
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-9">
-					<form class="contact-form">
+					<form method="post" class="contact-form">
+						{% csrf_token %}
 						<div class="row">
 							<div class="col-md-6">
-								<input type="text" placeholder="Nombre">
+							 <label class="text-black" for="fname">Nombre</label>
+								  {{ form.nombre }}
 							</div>
 							<div class="col-md-6">
-								<input type="text" placeholder="Email">
+							 <label class="text-black" for="email">Correo</label>
+								 {{ form.correo }}
 							</div>
 							<div class="col-md-12">
-								<input type="text" placeholder="Asunto">
-								<textarea placeholder="Mensaje"></textarea>
+							 <label class="text-black" for="subject">Asunto</label>
+								{{ form.asunto }}
+								 <label class="text-black" for="message">Mensaje</label>
+								   {{ form.mensaje }}
                 <center>
                   <button class="site-btn">Enviar</button>
                   <br></br>

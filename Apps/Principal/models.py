@@ -74,8 +74,6 @@ class Servicios(ModeloBase):
         return self.titulo
 
 
-
-
 class Desarrollador(ModeloBase):
     foto = models.ImageField('Imagen Referencial',upload_to = 'desarrolladores/')
     nombre = models.CharField('Nombre', max_length = 50)
@@ -90,3 +88,17 @@ class Desarrollador(ModeloBase):
 
     def __str__(self):
         return self.nombre
+
+
+class Contacto(ModeloBase):
+    nombre = models.CharField('Nombre', max_length = 100)
+    correo = models.EmailField('Correo Electrónico', max_length = 200)
+    asunto = models.CharField('Asunto', max_length = 100)
+    mensaje = models.TextField('Mensaje')
+
+    class Meta:
+        verbose_name = 'Contacto'
+        verbose_name_plural = 'Contactos'
+
+    def __str__(self):
+        return self.asunto
