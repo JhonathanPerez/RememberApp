@@ -17,3 +17,7 @@ class Inicio(ListView):
         }
 
         return render(request,'index.html',contexto)
+
+
+class Nosotros(TemplateView):
+    template_name = 'nosotros.html'
