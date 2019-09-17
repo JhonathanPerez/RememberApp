@@ -28,6 +28,35 @@ class Nosotros(ListView):
             'opiniones':obtenerOpiniones(),
             'redes': obtenerRedes(),
             'web':obtenerWeb(),
+            'desarrolladores':obtenerDesarrolladores(),
         }
 
         return render(request,'nosotros.html',contexto)
+
+
+class Servicios(ListView):
+    def get(self,request,*args,**kwargs):
+
+        contexto = {
+            'principal':obtenerPrincipal(),
+            'servicios':obtenerServicios(),
+            'opiniones':obtenerOpiniones(),
+            'redes': obtenerRedes(),
+            'web':obtenerWeb(),
+        }
+
+        return render(request,'servicios.html',contexto)
+
+
+class Contacto(ListView):
+    def get(self,request,*args,**kwargs):
+
+        contexto = {
+            'principal':obtenerPrincipal(),
+            'servicios':obtenerServicios(),
+            'opiniones':obtenerOpiniones(),
+            'redes': obtenerRedes(),
+            'web':obtenerWeb(),
+        }
+
+        return render(request,'contacto.html',contexto)

@@ -1,4 +1,4 @@
-from .models import RedesSociales,Web, OpinionesClientes, Servicios, Principal
+from .models import RedesSociales,Web, OpinionesClientes, Servicios, Principal, Desarrollador
 
 
 def obtenerPrincipal():
@@ -15,3 +15,6 @@ def obtenerOpiniones():
 
 def obtenerServicios():
     return Servicios.objects.filter(estado = True)
+
+def obtenerDesarrolladores():
+    return Desarrollador.objects.filter(estado = True)

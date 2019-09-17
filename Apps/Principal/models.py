@@ -71,4 +71,22 @@ class Servicios(ModeloBase):
         verbose_name_plural = 'Servicios'
 
     def __str__(self):
-        return self.descripcion
+        return self.titulo
+
+
+
+
+class Desarrollador(ModeloBase):
+    foto = models.ImageField('Imagen Referencial',upload_to = 'desarrolladores/')
+    nombre = models.CharField('Nombre', max_length = 50)
+    cargo = models.CharField('Cargo', max_length = 50)
+    facebook = models.URLField('Facebook')
+    twitter = models.URLField('Twitter')
+    instagram = models.URLField('Instagram')
+
+    class Meta:
+        verbose_name = 'Desarrollador'
+        verbose_name_plural = 'Desarrolladores'
+
+    def __str__(self):
+        return self.nombre

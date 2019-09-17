@@ -3,14 +3,34 @@
 
 {% block titulo %}Nosotros{% endblock titulo %}
 
+{% block header %}
+	<!-- Header section -->
+	<header class="header-section">
+		<a href="{% url 'principal:index' %}" class="site-logo"><img src="{% static 'principal/./img/logo.png'%}" alt=""></a>
+		<div class="nav-switch">
+			<i class="fa fa-bars"></i>
+		</div>
+		<div class="nav-warp">
+			<div class="user-panel">
+				<a href="{% url 'login:login' %}">Ingresar</a>
+			</div>
+			<ul class="main-menu">
+				<li><a href="{% url 'principal:index'%}">Home</a></li>
+				<li><a href="{% url 'principal:nosotros' %}">Acerca De Nosotros</a></li>
+				<li><a href="./blog.html">Blog</a></li>
+				<li><a href="{% url 'principal:contactenos' %}">Contactenos</a></li>
+			</ul>
+		</div>
+	</header>
+	<!-- Header section end -->
+	{% endblock header %}
+
+
 {% block hero %}
 	<!-- Page Top section -->
 	<section class="page-top-section set-bg" data-setbg="{% static 'principal/img/page-top-bg.jpg' %}">
 		<div class="container">
-			<h2>About us</h2>
-			<div class="site-breadcrumb">
-				<a href="home">Home</a> / <span>About us</span>
-			</div>
+			<h2>Acerca de nosotros.</h2>
 		</div>
 	</section>
 	<!-- Page Top section end -->
@@ -26,19 +46,21 @@
 				<p>Lo mejor de nosotros</p>
 				<h2>Nuestro Equipo de Trabajo</h2>
 			</div>
-			<div class="row">
+			<div class="row dflex justify-content-center">
+				{% for desarrollador in desarrolladores %}
 				<div class="col-lg-3 col-md-6">
 					<div class="team-member">
-						<img src="{% static 'principal/img/team/1.jpg' %}" alt="#">
-						<h4>Daniel Smith</h4>
-						<p>Team manager</p>
+						<img src="{{desarrollador.foto.url}}" alt="#">
+						<h4>{{desarrollador.nombre}}</h4>
+						<p>{{desarrollador.cargo}}</p>
 						<div class="tm-social social">
-							<a href="#"><i class="fa fa-pinterest"></i></a>
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="{{desarrollador.instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
+							<a href="{{desarrollador.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="{{desarrollador.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
 						</div>
 					</div>
 				</div>
+					{% endfor %}
 			</div>
 		</div>
 	</section>
