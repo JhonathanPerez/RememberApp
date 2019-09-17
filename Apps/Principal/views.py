@@ -19,5 +19,15 @@ class Inicio(ListView):
         return render(request,'index.html',contexto)
 
 
-class Nosotros(TemplateView):
-    template_name = 'nosotros.html'
+class Nosotros(ListView):
+    def get(self,request,*args,**kwargs):
+
+        contexto = {
+            'principal':obtenerPrincipal(),
+            'servicios':obtenerServicios(),
+            'opiniones':obtenerOpiniones(),
+            'redes': obtenerRedes(),
+            'web':obtenerWeb(),
+        }
+
+        return render(request,'nosotros.html',contexto)

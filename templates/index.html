@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>INICIO</title>
+	<title>{% block titulo %}INICIO{% endblock titulo %}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Cloud 83 - hosting template ">
 	<meta name="keywords" content="cloud, hosting, creative, html">
@@ -35,6 +35,7 @@
 		<div class="loader"></div>
 	</div>
 
+{% block header %}
 	<!-- Header section -->
 	<header class="header-section">
 		<a href="{% url 'principal:index' %}" class="site-logo"><img src="{% static 'principal/./img/logo.png'%}" alt=""></a>
@@ -55,8 +56,9 @@
 		</div>
 	</header>
 	<!-- Header section end -->
+	{% endblock header %}
 
-
+{% block hero %}
 	<!-- Hero section -->
 	<section class="hero-section set-bg" data-setbg="{% static 'principal/img/bg.jpg'%}">
 		<div class="container h-100">
@@ -74,8 +76,9 @@
 		</div>
 	</section>
 	<!-- Hero section end -->
+	{% endblock hero %}
 
-
+	{% block body %}
 	<!-- Features section -->
 	<section class="features-section spad">
 		<div class="container">
@@ -151,10 +154,11 @@
 		</div>
 	</section>
 	<!-- Skills & testimonials section end -->
+	{% endblock body %}
 
 
 
-
+{% block footer %}
 	<!-- Footer top section -->
 	<section class="footer-top-section text-white spad">
 		<div class="container">
@@ -207,6 +211,7 @@
 			</ul>
 	</footer>
 	<!-- Footer top section end -->
+	{% endblock footer %}
 
 
 	<!--====== Javascripts & Jquery ======-->
