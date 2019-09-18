@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic import TemplateView, ListView
 from .models import Principal,RedesSociales,Web
 from .utils import *
@@ -67,9 +68,26 @@ class Contacto(ListView):
         form = ContactoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('principal:index')
-        else:
+            mensaje = messages.add_message(request, messages.INFO, "Gracias por contactarnos!")
             contexto = {
+                'principal':obtenerPrincipal(),
+                'servicios':obtenerServicios(),
+                'opiniones':obtenerOpiniones(),
+                'redes': obtenerRedes(),
+                'web':obtenerWeb(),
+                'mensaje':mensaje,
+            }
+
+            return render(request,'index.html',contexto)
+        else:
+            mensaje = messages.add_message(request, messages.ERROR, "Ops! algo salió mal, verifica los datos.")
+            contexto = {
+                'principal':obtenerPrincipal(),
+                'servicios':obtenerServicios(),
+                'opiniones':obtenerOpiniones(),
+                'redes': obtenerRedes(),
+                'web':obtenerWeb(),
                 'form':form,
+                'mensaje':mensaje,
             }
             return render(request,'contacto.html',contexto)
