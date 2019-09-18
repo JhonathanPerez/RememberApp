@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.mail import send_mail
+
 
 class ModeloBase(models.Model):
     id = models.AutoField(primary_key = True)
@@ -102,3 +104,14 @@ class Contacto(ModeloBase):
 
     def __str__(self):
         return self.asunto
+
+class Subscriptor(models.Model):
+    subid = models.AutoField(primary_key=True)
+    subemail = models.EmailField('Correo Electrónico', max_length = 200)
+
+    class Meta:
+        verbose_name = 'Subscriptor'
+        verbose_name_plural = 'Subscriptores'
+
+    def __str__(self):
+        return self.subemail

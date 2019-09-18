@@ -3,20 +3,24 @@
 <script src="{% static 'principal/js/jquery.js' %}"></script>
 <script src="{% static 'principal/js/sweetalert.min.js' %}"></script>
 
+
+
 <div id="alerts">
     {% if messages %}
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                 <script>
-                    $(document).ready(function ()
+                    $(document).ready(function()
                     {
-                        swal(
-                        {
-                            type: "error",
-                            title: "ERROR",
-                            text: "{{ message }}",
-                            showConfirmButton: true
-                        });
+                        function tiempo(){
+                          swal(
+                          {
+                              type: "error",
+                              title: "Oops",
+                              text: "{{ message }}",
+                              showConfirmButton: true
+                          });
+                        }setTimeout(tiempo, 700);
                     })
                 </script>
 
@@ -24,13 +28,15 @@
                 <script>
                     $(document).ready(function ()
                     {
+                      function tiempo(){
                         swal(
                         {
                             type: "success",
-                            title: "INFORMACIÓN",
+                            title: "Gracias por contactarnos",
                             text: "{{ message }}",
                             showConfirmButton: true
                         });
+                      }setTimeout(tiempo, 700);
                     })
                 </script>
             {% endif %}

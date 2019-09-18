@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Web, RedesSociales, Principal, OpinionesClientes, Servicios, Desarrollador, Contacto
+from .models import Web, RedesSociales, Principal, OpinionesClientes, Servicios, Desarrollador, Contacto,Subscriptor
 
 admin.site.register(Web)
 admin.site.register(RedesSociales)
@@ -8,3 +8,4 @@ admin.site.register(OpinionesClientes)
 admin.site.register(Servicios)
 admin.site.register(Desarrollador)
 admin.site.register(Contacto)
+admin.site.register(Subscriptor)

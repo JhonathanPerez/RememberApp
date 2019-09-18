@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto
+from .models import Contacto, Subscriptor
 
 class ContactoForm(forms.ModelForm):
     class Meta:
@@ -30,6 +30,20 @@ class ContactoForm(forms.ModelForm):
                 attrs = {
                     'class':'form-control',
                     'placeholder': 'Ingrese su mensaje',
+                }
+            ),
+        }
+
+class SubscriptorForm(forms.ModelForm):
+    class Meta:
+        model = Subscriptor
+        fields = '__all__'
+
+        widgets = {
+            'subemail':forms.EmailInput(
+                attrs = {
+                    'class':'domain-search-form',
+                    'placeholder':'Ingrese su correo eléctronico',
                 }
             ),
         }
