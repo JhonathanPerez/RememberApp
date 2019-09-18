@@ -25,16 +25,42 @@ class Inicio(ListView):
 
 
     def post(self,request,*args,**kwargs):
-        correo = request.POST.get('subemail')
-        Subscriptor.objects.create(subemail = correo)
-        asunto = 'GRACIAS POR SUSCRIBIRTE!'
-        mensaje = 'Te haz suscrito exitosamente, te estaremos enviando nuestras ultimas actualizaciones a este correo!!!'
-        try:
-            send_mail(asunto,mensaje,EMAIL_HOST_USER,[correo])
-        except:
-            pass
+        form = SubscriptorForm(request.POST)
+        correo_subs = request.POST.get('subemail')
 
-        return redirect('principal:index')
+        query = Subscriptor.objects.filter(subemail = correo_subs)
+
+        if len(query) == 0:
+            verifica = None
+
+        else:
+            verifica = 1
+
+
+        if verifica == None:
+            if form.is_valid():
+                correo = request.POST.get('subemail')
+                Subscriptor.objects.create(subemail = correo)
+                asunto = 'GRACIAS POR SUSCRIBIRTE!'
+                contenido = 'Te haz suscrito exitosamente a nuestras actualizaciones, te estaremos enviando por este medio todas nuestras novedades!'
+                suscriptor = messages.add_message(request, messages.INFO, "Se ha registrado tu correo en nuestra base de datos.")
+                try:
+                    send_mail(asunto,contenido,EMAIL_HOST_USER,[correo])
+                except:
+                    pass
+
+                return redirect('principal:index')
+            else:
+                suscriptor = messages.add_message(request, messages.ERROR, "Verifica el correo ingresado.")
+                return redirect('principal:index')
+
+        else:
+            suscriptor = messages.add_message(request, messages.WARNING, "Ya estas registrado en nuestra base de datos")
+            return redirect('principal:index')
+
+
+
+
 
 
 class Nosotros(ListView):
@@ -84,17 +110,15 @@ class Contacto(ListView):
         form = ContactoForm(request.POST)
         if form.is_valid():
             form.save()
-            mensaje = messages.add_message(request, messages.INFO, "Se ha registrado tu solicitud")
+            form = ContactoForm()
+            subs_form =  SubscriptorForm()
+            mensaje = messages.add_message(request, messages.SUCCESS, "Se ha registrado tu solicitud")
             contexto = {
-                'principal':obtenerPrincipal(),
-                'servicios':obtenerServicios(),
-                'opiniones':obtenerOpiniones(),
-                'redes': obtenerRedes(),
-                'web':obtenerWeb(),
                 'mensaje':mensaje,
+                'form':form,
             }
 
-            return render(request,'index.html',contexto)
+            return render(request,'contacto.html',contexto)
         else:
             mensaje = messages.add_message(request, messages.ERROR, "Algo salió mal, verifica los datos.")
             contexto = {

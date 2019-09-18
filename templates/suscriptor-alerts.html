@@ -1,0 +1,45 @@
+{%  load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'principal/css/sweetalert.css' %}">
+<script src="{% static 'principal/js/jquery.js' %}"></script>
+<script src="{% static 'principal/js/sweetalert.min.js' %}"></script>
+
+
+
+<div id="alerts">
+    {% if suscriptor %}
+        {% for mensaje in suscriptor %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>
+                    $(document).ready(function()
+                    {
+                        function tiempo(){
+                          swal(
+                          {
+                              type: "error",
+                              title: "Oops :(",
+                              text: "{{ suscriptor }}",
+                              showConfirmButton: true
+                          });
+                        }setTimeout(tiempo, 700);
+                    })
+                </script>
+
+            {% else %}
+                <script>
+                    $(document).ready(function ()
+                    {
+                      function tiempo(){
+                        swal(
+                        {
+                            type: "success",
+                            title: "Gracias por suscribirte!",
+                            text: "{{ suscriptor }}",
+                            showConfirmButton: true
+                        });
+                      }setTimeout(tiempo, 700);
+                    })
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>

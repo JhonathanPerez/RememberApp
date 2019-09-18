@@ -16,7 +16,7 @@
                           swal(
                           {
                               type: "error",
-                              title: "Oops",
+                              title: "Oops :(",
                               text: "{{ message }}",
                               showConfirmButton: true
                           });
@@ -24,6 +24,37 @@
                     })
                 </script>
 
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+              <script>
+                  $(document).ready(function()
+                  {
+                      function tiempo(){
+                        swal(
+                        {
+                            type: "success",
+                            title: "Gracias por suscribirte!",
+                            text: "{{ message }}",
+                            showConfirmButton: true
+                        });
+                      }setTimeout(tiempo, 700);
+                  })
+              </script>
+
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+              <script>
+                  $(document).ready(function ()
+                  {
+                    function tiempo(){
+                      swal(
+                      {
+                          type: "success",
+                          title: "Gracias por contactarnos!",
+                          text: "{{ message }}",
+                          showConfirmButton: true
+                      });
+                    }setTimeout(tiempo, 700);
+                  })
+              </script>
             {% else %}
                 <script>
                     $(document).ready(function ()
@@ -31,8 +62,8 @@
                       function tiempo(){
                         swal(
                         {
-                            type: "success",
-                            title: "Gracias por contactarnos",
+                            type: "warning",
+                            title: "Oops :)",
                             text: "{{ message }}",
                             showConfirmButton: true
                         });

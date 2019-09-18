@@ -19,20 +19,21 @@ class Login(ListView):
 
 
     def post(self, request):
-        username = request.POST.get("signin_username", "")
-        password = request.POST.get("signin_password", "")
+        username = request.POST.get("username",)
+        password = request.POST.get("password",)
         usuario = auth.authenticate(username=username,
                                     password=password)
+
         if usuario != None and usuario.is_active:
             auth.login(request, usuario)
             lista_roles = UsuarioRol.objects.filter(usuid=usuario.pk)
 
             if len(lista_roles) > 0:
                 if lista_roles[0].rolid.roltipo == "Cuidador":
-                    return HttpResponseRedirect(reverse('vendedores:listar_vehiculos'))
+                    return HttpResponseRedirect(reverse('principal:index'))
 
                 elif lista_roles[0].rolid.roltipo == "Paciente":
-                    return HttpResponseRedirect(reverse('compradores:listar_vehiculos'))
+                    return HttpResponseRedirect(reverse('principal:nosotros'))
 
                 else:
                     messages.add_message(request, messages.ERROR, "Rol de usuario inexistente")
