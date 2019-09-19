@@ -32,7 +32,7 @@ SECRET_KEY = '4a$#9=*!rljax(jhugteounuvi%%(5=v354y$ao88k1%+k^sd2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.4.20.140']
+ALLOWED_HOSTS = ['192.168.0.12']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Apps.Autenticacion',
     'Apps.Principal',
     'Apps.Blog',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
