@@ -114,6 +114,11 @@ class Contacto(ListView):
             subs_form =  SubscriptorForm()
             mensaje = messages.add_message(request, messages.SUCCESS, "Se ha registrado tu solicitud")
             contexto = {
+                'principal':obtenerPrincipal(),
+                'servicios':obtenerServicios(),
+                'opiniones':obtenerOpiniones(),
+                'redes': obtenerRedes(),
+                'web':obtenerWeb(),
                 'mensaje':mensaje,
                 'form':form,
             }
