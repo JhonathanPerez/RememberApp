@@ -1160,8 +1160,9 @@ ol {
 .team-member img {
 	border-radius: 34px;
 	margin-bottom: 48px;
-	width: 200px;
+	width: 210px;
 	height: 200px;
+	background-size: cover;
 }
 
 .team-member p {

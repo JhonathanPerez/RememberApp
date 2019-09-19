@@ -47,11 +47,11 @@
 				<a href="{% url 'login:login' %}">Ingresar</a>
 			</div>
 			<ul class="main-menu">
-				<li><a href="{% url 'principal:index'%}">Home</a></li>
-				<li><a href="{% url 'principal:nosotros' %}">Acerca De Nosotros</a></li>
+				<li><a href="{% url 'principal:index'%}">Inicio</a></li>
+				<li><a href="{% url 'principal:nosotros' %}">Acerca de nosotros</a></li>
 				<li><a href="#servicios">Servicios</a></li>
 				<li><a href="./blog.html">Blog</a></li>
-				<li><a href="{% url 'principal:contactenos' %}">Contactenos</a></li>
+				<li><a href="{% url 'principal:contactenos' %}">Contáctenos</a></li>
 			</ul>
 		</div>
 	</header>
@@ -181,16 +181,16 @@
 				</div>
 				<div class="col-lg-4  col-md-6">
 					<div class="footer-widget">
-						<h4 class="fw-title">Contactenos</h4>
+						<h4 class="fw-title">Contáctenos</h4>
 						<div class="fw-latest-post-widget">
-							<p class="mb-0 font-weight-bold">Direccion</p>
+							<p class="mb-0 font-weight-bold">Dirección</p>
 							<p class="mb-4">{{web.direccion}}</p>
 							<div class="lp-item">
 								<p class="mb-0 font-weight-bold">Teléfono</p>
                 <p class="mb-4"><a href="#">{{web.telefono}}</a></p>
 							</div>
 							<div class="lp-item">
-								<p class="mb-0 font-weight-bold">Correo Electronico</p>
+								<p class="mb-0 font-weight-bold">Correo Electrónico</p>
 	              <p class="mb-0"><a href="#">{{web.email}}</a></p>
 							</div>
 						</div>
@@ -200,21 +200,24 @@
 		</div>
 	</section>
 	<!-- Footer top section end -->
+	{% endblock footer %}
 
+	{% block fsection %}
 
 	<!-- Footer section -->
 	<footer class="footer-section">
 		<div class="container d-flex justify-content-center">
 			<ul class="footer-menu">
-				<li><a href="{% url 'principal:index' %}">Home</a></li>
-				<li><a href="">About us</a></li>
-				<li><a href="">Services</a></li>
-				<li><a href="">News</a></li>
-				<li><a href="">Contact</a></li>
+				<li><a href="{% url 'principal:index' %}">Inicio</a></li>
+				<li><a href="{% url 'principal:nosotros' %}">Acerca de nosotros</a></li>
+				<li><a href="{% url 'principal:servicios' %}">Servicios</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="{% url 'principal:contactenos' %}">Contáctenos</a></li>
 			</ul>
 	</footer>
 	<!-- Footer top section end -->
-	{% endblock footer %}
+	{% endblock fsection %}
+
 
 
 	<!--====== Javascripts & Jquery ======-->

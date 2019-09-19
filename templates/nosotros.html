@@ -15,10 +15,10 @@
 				<a href="{% url 'login:login' %}">Ingresar</a>
 			</div>
 			<ul class="main-menu">
-				<li><a href="{% url 'principal:index'%}">Home</a></li>
-				<li><a href="{% url 'principal:nosotros' %}">Acerca De Nosotros</a></li>
+				<li><a href="{% url 'principal:index'%}">Inicio</a></li>
+				<li><a href="{% url 'principal:nosotros' %}">Acerca de nosotros</a></li>
 				<li><a href="./blog.html">Blog</a></li>
-				<li><a href="{% url 'principal:contactenos' %}">Contactenos</a></li>
+				<li><a href="{% url 'principal:contactenos' %}">Contáctenos</a></li>
 			</ul>
 		</div>
 	</header>
@@ -30,7 +30,7 @@
 	<!-- Page Top section -->
 	<section class="page-top-section set-bg" data-setbg="{% static 'principal/img/page-top-bg.jpg' %}">
 		<div class="container">
-			<h2>Acerca de nosotros.</h2>
+			<h2>Acerca de nosotros</h2>
 		</div>
 	</section>
 	<!-- Page Top section end -->
@@ -66,3 +66,18 @@
 	</section>
 	<!-- Team section end-->
 {% endblock body %}
+
+{% block fsection %}
+
+<!-- Footer section -->
+<footer class="footer-section">
+	<div class="container d-flex justify-content-center">
+		<ul class="footer-menu">
+			<li><a href="{% url 'principal:index' %}">Inicio</a></li>
+			<li><a href="{% url 'principal:nosotros' %}">Acerca de nosotros</a></li>
+			<li><a href="#">Blog</a></li>
+			<li><a href="{% url 'principal:contactenos' %}">Contáctenos</a></li>
+		</ul>
+</footer>
+<!-- Footer top section end -->
+{% endblock fsection %}

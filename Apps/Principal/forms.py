@@ -43,7 +43,7 @@ class SubscriptorForm(forms.ModelForm):
             'subemail':forms.EmailInput(
                 attrs = {
                     'class':'domain-search-form',
-                    'placeholder':'Ingrese su correo eléctronico',
+                    'placeholder':'Ingrese su correo electrónico',
                 }
             ),
         }
