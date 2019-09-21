@@ -18,7 +18,9 @@ class Perfil(LoginRequiredMixin, View):
             return render(request,
                           self.template_name,
                           {'form': form,
-                           'foto_usuario': datos_usuario.foto})
+                           'foto_usuario': datos_usuario.foto,
+                           'user': datos_usuario,
+                           })
 
         except DatosPersonales.DoesNotExist:
             return render(request, "pages-404.html")

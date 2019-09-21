@@ -55,4 +55,4 @@ class Logout(View):
 
     def get(self, request):
         auth.logout(request)
-        return HttpResponseRedirect(reverse('login'))
+        return HttpResponseRedirect(reverse('autenticacion:login'))

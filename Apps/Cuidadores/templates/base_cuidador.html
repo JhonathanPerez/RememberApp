@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Concesionario</title>
+        <title>Remember</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <!-- Open Sans font from Google CDN -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <div id="main-wrapper">
             <div id="main-navbar" class="navbar navbar-inverse" role="navigation">
                 <!-- Main menu toggle -->
-                <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+                <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">Esconder Menú</span></button>
 
                 <div class="navbar-inner">
                     <!-- Main navbar header -->
@@ -40,7 +40,7 @@
                         <!-- Logo -->
                         <a href="#" class="navbar-brand">
                             <div><img alt="Pixel Admin" src="{% static 'usuarios/images/pixel-admin/main-navbar-logo.png'%}"></div>
-                            Concesionario
+                            Remember
                         </a>
 
                         <!-- Main navbar toggle -->
@@ -55,17 +55,17 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
                                             <img src="{{ foto_usuario.url }}" id="img_usuario" alt="Foto Usuario">
-                                            <span>{{ user.first_name }}&nbsp;{{ user.last_name }}</span>
+                                            <span>{{ user.nombre }}&nbsp;{{ user.apellido }}</span>
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="#">
+                                                <a href="{% url 'cuidadores:perfil' %}">
                                                     <i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Perfil
                                                 </a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a href="{% url 'login:login' %}">
+                                                <a href="{% url 'autenticacion:logout' %}">
                                                     <i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Cerrar Sesión
                                                 </a>
                                             </li>
@@ -83,28 +83,29 @@
                     <div class="menu-content top" id="menu-content-demo">
                         <div>
                             <div class="text-bg">
-                                <span class="text-slim">Bienvenido,</span><br>
-                                <span class="text-semibold">{{ user.first_name }}</span>
+                                <span class="text-slim">Bienvenido</span><br>
+                                <div>{{ user.nombre }}</div
+                                <span class="text-semibold"></span>
                             </div>
                             <img src="{{ foto_usuario.url }}" id="img_usuario" alt="Foto Usuario">
                             <a href="#" class="close">&times;</a>
                         </div>
                     </div>
                     <ul class="navigation">
-                        <li id="item_vehiculos">
-                            <a href="#">
-                                <i class="menu-icon fa fa-eye"></i>
-                                <span class="mm-text">Vehiculos</span>
+                        <li id="item_usuario">
+                            <a href="{% url 'cuidadores:perfil' %}">
+                                <i class="menu-icon fa fa-user"></i>
+                                <span class="mm-text">Perfil</span>
                             </a>
                         </li>
                         <li id="item_usuario">
                             <a href="#">
                                 <i class="menu-icon fa fa-user"></i>
-                                <span class="mm-text">Perfil</span>
+                                <span class="mm-text">Pacientes</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{% url 'autenticacion:logout' %}">
                                 <i class="menu-icon fa fa-power-off"></i>
                                 <span class="mm-text">Cerrar Sesion</span>
                             </a>

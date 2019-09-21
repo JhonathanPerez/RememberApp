@@ -5,6 +5,22 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="{% static 'principal/img/favicon.ico'%}" rel="shortcut icon"/>
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+	<!-- Stylesheets Adicionales -->
+	<link rel="stylesheet" href="{% static 'principal/css/bootstrap.min.css'%}"/>
+	<link rel="stylesheet" href="{% static 'principal/css/font-awesome.min.css'%}"/>
+	<link rel="stylesheet" href="{% static 'principal/css/flaticon.css'%}"/>
+	<link rel="stylesheet" href="{% static 'principal/css/owl.carousel.min.css'%}"/>
+	<link rel="stylesheet" href="{% static 'principal/css/animate.css'%}"/>
+	<link rel="stylesheet" href="{% static 'principal/css/style.css'%}"/>
+		<!-- Fin Stylesheets Adicionales -->
+
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
@@ -27,6 +43,18 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 <!--===============================================================================================-->
+
+<div id="preloder">
+	<div class="loader"></div>
+</div>
+
+<!-- Header section -->
+<header class="header-section">
+	<a href="{% url 'principal:index' %}" class="site-logo"><img src="{% static 'principal/./img/logo.png'%}" alt=""></a>
+</header>
+<!-- Header section end -->
+
+
 </head>
 <body>
 	{% include 'alerts.html' %}
@@ -91,6 +119,14 @@
 
 
 	<div id="dropDownSelect1"></div>
+
+	<!--====== Javascripts & Jquery Adicionales ======-->
+	<script src="{% static 'principal/js/jquery-3.2.1.min.js'%}"></script>
+	<script src="{% static 'principal/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'principal/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'principal/js/circle-progress.min.js'%}"></script>
+	<script src="{% static 'principal/js/main.js'%}"></script>
+		<!--====== J Fin Javascripts & Jquery Adicionales ======-->
 
 <!--===============================================================================================-->
 	<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
