@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include(('Apps.Principal.urls', 'principal'))),
     path('login/', include(('Apps.Autenticacion.urls', 'login'))),
     path('', include(('Apps.Blog.urls', 'blog'))),
+    path('', include(('Apps.Cuidadores.urls', 'cuidadores'))),
 ]
 
 if settings.DEBUG:

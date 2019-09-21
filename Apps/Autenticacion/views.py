@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView,TemplateView
+from django.views.generic import ListView,TemplateView,View
 from django.contrib import auth
 from django.contrib import messages
 from .models import UsuarioRol
@@ -30,7 +30,7 @@ class Login(ListView):
 
             if len(lista_roles) > 0:
                 if lista_roles[0].rolid.roltipo == "Cuidador":
-                    return HttpResponseRedirect(reverse('principal:index'))
+                    return HttpResponseRedirect(reverse('cuidadores:perfil'))
 
                 elif lista_roles[0].rolid.roltipo == "Paciente":
                     return HttpResponseRedirect(reverse('principal:nosotros'))
@@ -49,3 +49,10 @@ class Login(ListView):
                 messages.add_message(request, messages.ERROR, "El Usuario esta inactivo")
 
         return render(request, 'login.html')
+
+
+class Logout(View):
+
+    def get(self, request):
+        auth.logout(request)
+        return HttpResponseRedirect(reverse('login'))
