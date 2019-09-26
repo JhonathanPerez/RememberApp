@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from Apps.Autenticacion.models import DatosPersonales
+from Apps.Principal.models import OpinionesClientes
 
 class DatosPersonalesForm(forms.ModelForm):
     class Meta:
@@ -27,3 +28,18 @@ class DatosPersonalesForm(forms.ModelForm):
 
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-control'})
+
+
+class OpinionesForm(forms.ModelForm):
+    class Meta:
+        model = OpinionesClientes
+        fields = 'mensaje',
+
+        widgets = {
+            'mensaje':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese su mensaje',
+                }
+            ),
+        }

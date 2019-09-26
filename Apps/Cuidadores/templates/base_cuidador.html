@@ -104,7 +104,13 @@
                                 <span class="mm-text">Pacientes</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="item_usuario">
+                            <a href="{% url 'cuidadores:opinion' %}">
+                                <i class="menu-icon fa fa-user"></i>
+                                <span class="mm-text">Opiniones</span>
+                            </a>
+                        </li>
+                        <li id="item_usuario">
                             <a href="{% url 'autenticacion:logout' %}">
                                 <i class="menu-icon fa fa-power-off"></i>
                                 <span class="mm-text">Cerrar Sesion</span>
