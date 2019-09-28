@@ -92,31 +92,45 @@
                         </div>
                     </div>
                     <ul class="navigation">
-                        <li id="item_usuario">
-                            <a href="{% url 'cuidadores:perfil' %}">
-                                <i class="menu-icon fa fa-user"></i>
-                                <span class="mm-text">Perfil</span>
-                            </a>
-                        </li>
-                        <li id="item_usuario">
-                            <a href="#">
-                                <i class="menu-icon fa fa-user"></i>
-                                <span class="mm-text">Pacientes</span>
-                            </a>
-                        </li>
-                        <li id="item_usuario">
-                            <a href="{% url 'cuidadores:opinion' %}">
-                                <i class="menu-icon fa fa-user"></i>
-                                <span class="mm-text">Opiniones</span>
-                            </a>
-                        </li>
-                        <li id="item_usuario">
-                            <a href="{% url 'autenticacion:logout' %}">
-                                <i class="menu-icon fa fa-power-off"></i>
-                                <span class="mm-text">Cerrar Sesion</span>
-                            </a>
-                        </li>
-                    </ul> <!-- / .navigation -->
+                       <li class="mm-dropdown">
+                           <a href="#">
+                               <i class="menu-icon fa fa-eye"></i>
+                               <span class="mm-text">Pacientes</span>
+                           </a>
+                           <ul>
+                             <li>
+                                 <a href="{% url 'cuidadores:registro_paciente' %}">
+                                     <i class="menu-icon fa fa-user"></i>
+                                     <span class="mm-text">Vincular Paciente</span>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a href="#">
+                                     <i class="menu-icon fa fa-user"></i>
+                                     <span class="mm-text">Pacientes Vinculados</span>
+                                 </a>
+                             </li>
+                           </ul>
+                       </li>
+                       <li>
+                           <a href="{% url 'cuidadores:perfil' %}">
+                               <i class="menu-icon fa fa-user"></i>
+                               <span class="mm-text">Perfil</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'cuidadores:opinion' %}">
+                               <i class="menu-icon fa fa-user"></i>
+                               <span class="mm-text">Opiniones</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'autenticacion:logout' %}">
+                               <i class="menu-icon fa fa-power-off"></i>
+                               <span class="mm-text">Cerrar Sesion</span>
+                           </a>
+                       </li>
+                   </ul> <!-- / .navigation -->
                 </div> <!-- / #main-menu-inner -->
             </div> <!-- / #main-menu -->
         <!-- /4. $MAIN_MENU -->

@@ -1,7 +1,8 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from Apps.Autenticacion.models import DatosPersonales
+from Apps.Autenticacion.models import DatosPersonales, Paciente
 from Apps.Principal.models import OpinionesClientes
+
 
 class DatosPersonalesForm(forms.ModelForm):
     class Meta:
@@ -42,4 +43,59 @@ class OpinionesForm(forms.ModelForm):
                     'placeholder': 'Ingrese su mensaje',
                 }
             ),
+        }
+
+class RegistroPacienteForm(forms.ModelForm):
+    class Meta:
+        model = Paciente
+        fields = "__all__"
+        exclude = ('usuid',)
+        widgets = {
+            'nombre':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese el nombre del paciente',
+                }
+            ),
+
+            'apellido':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese el apellido del paciente',
+                }
+            ),
+
+            'genero':forms.Select(
+                attrs = {
+                    'class':'form-control',
+                }
+            ),
+
+            'tipoid':forms.Select(
+                attrs = {
+                    'class':'form-control',
+                }
+            ),
+
+            'numeroid':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese el número de identificación',
+                }
+            ),
+
+            'telefono':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese el número de télefono',
+                }
+            ),
+
+            'correo':forms.TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese su correo electronico',
+                }
+            ),
+
         }

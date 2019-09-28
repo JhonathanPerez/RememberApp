@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from .forms import DatosPersonalesForm, OpinionesForm
-from Apps.Autenticacion.models import DatosPersonales, UsuarioRol
+from .forms import DatosPersonalesForm, OpinionesForm, RegistroPacienteForm
+from Apps.Autenticacion.models import DatosPersonales, UsuarioRol, Vinculaciones
 from Apps.Principal.models import OpinionesClientes
 
 
@@ -30,8 +30,10 @@ class Perfil(LoginRequiredMixin, View):
     def post(self, request):
         try:
             datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+            form = self.form_class(request.user, request.POST, request.FILES, instance=datos_usuario)
 
             if form.is_valid():
+                form.save()
                 messages.add_message(request, messages.INFO, 'El Perfil se modificó correctamente')
 
             else:
@@ -77,3 +79,49 @@ class Opinion(LoginRequiredMixin, View):
                 }
 
                 return render(request,'opiniones_cuidador.html',contexto)
+
+
+
+class RegistroPaciente(LoginRequiredMixin, View):
+    form_class = RegistroPacienteForm
+    def get(self,request,*args,**kwargs):
+        form = RegistroPacienteForm()
+        datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+        contexto = {
+
+            'form':form,
+            'foto_usuario': datos_usuario.foto,
+            'user': datos_usuario,
+        }
+
+        return render(request,'registro_paciente.html',contexto)
+
+    def post(self,request,*args,**kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            nombre_paciente = request.POST.get("nombre",)
+            apellido_paciente = request.POST.get("apellido",)
+            datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+            vincular = Vinculaciones(nombre=nombre_paciente,apellido=apellido_paciente,cuidador_id=request.user.pk)
+            vincular.save()
+            form = RegistroPacienteForm()
+            mensaje = messages.add_message(request, messages.SUCCESS, "EL paciente se ha registrado con exito, recibira un correo con el usuario y contraseña de acceso!")
+            contexto = {
+                'mensaje':mensaje,
+                'form':form,
+                'foto_usuario': datos_usuario.foto,
+                'user': datos_usuario,
+            }
+
+            return render(request,'registro_paciente.html',contexto)
+        else:
+            mensaje = messages.add_message(request, messages.ERROR, "Algo salió mal, verifica los datos.")
+            datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+            contexto = {
+                'form':form,
+                'mensaje':mensaje,
+                'foto_usuario': datos_usuario.foto,
+                'user': datos_usuario,
+            }
+            return render(request,'registro_paciente.html',contexto)
