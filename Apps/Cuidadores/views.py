@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.views.generic.base import View, TemplateView
+from django.views.generic.base import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .forms import DatosPersonalesForm, OpinionesForm, RegistroPacienteForm
 from Apps.Autenticacion.models import DatosPersonales, UsuarioRol, Vinculaciones
 from Apps.Principal.models import OpinionesClientes
+from Apps.Cuidadores.utils import *
 
 
 
@@ -131,9 +132,13 @@ class RegistroPaciente(LoginRequiredMixin, View):
 class ListaPaciente(LoginRequiredMixin, View):
 
     def get(self,request,*args,**kwargs):
+        datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+        consulta = obtenerPaciente(datos_usuario.pk)
+        print(consulta[0].foto)
         contexto = {
             'foto_usuario': datos_usuario.foto,
             'user': datos_usuario,
+            'pacientes':obtenerPaciente(datos_usuario.pk),
         }
 
         return render(request,'lista_pacientes.html',contexto)

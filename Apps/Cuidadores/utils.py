@@ -1,7 +1,4 @@
-from Apps.Principal.models import RedesSociales,Web
+from Apps.Autenticacion.models import  Paciente
 
-def obtenerRedes():
-    return RedesSociales.objects.filter(estado = True).latest('fecha_creacion')
-
-def obtenerWeb():
-    return Web.objects.filter(estado = True).latest('fecha_creacion')
+def obtenerPaciente(cuidador_id):
+    return Paciente.objects.filter(cuidador_id = cuidador_id)
