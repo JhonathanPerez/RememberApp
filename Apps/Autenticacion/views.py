@@ -33,7 +33,7 @@ class Login(ListView):
                     return HttpResponseRedirect(reverse('cuidadores:perfil'))
 
                 elif lista_roles[0].rolid.roltipo == "Paciente":
-                    return HttpResponseRedirect(reverse('principal:nosotros'))
+                    return HttpResponseRedirect(reverse('pacientes:perfil'))
 
                 else:
                     messages.add_message(request, messages.ERROR, "Rol de usuario inexistente")

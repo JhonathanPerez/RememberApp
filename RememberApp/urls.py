@@ -9,6 +9,8 @@ urlpatterns = [
     path('login/', include(('Apps.Autenticacion.urls', 'autenticacion'))),
     path('', include(('Apps.Blog.urls', 'blog'))),
     path('', include(('Apps.Cuidadores.urls', 'cuidadores'))),
+    path('', include(('Apps.Pacientes.urls', 'pacientes'))),
+    path('', include(('Apps.Actividades.urls', 'actividades'))),
 ]
 
 if settings.DEBUG:

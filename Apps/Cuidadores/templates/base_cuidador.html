@@ -38,7 +38,7 @@
                     <div class="navbar-header">
 
                         <!-- Logo -->
-                        <a href="#" class="navbar-brand">
+                        <a href="{% url 'cuidadores:perfil' %}" class="navbar-brand">
                             <div><img alt="Pixel Admin" src="{% static 'usuarios/images/pixel-admin/main-navbar-logo.png'%}"></div>
                             Remember
                         </a>
@@ -88,7 +88,7 @@
                                 <span class="text-semibold"></span>
                             </div>
                             <img src="{{ foto_usuario.url }}" id="img_usuario" alt="Foto Usuario">
-                            <a href="#" class="close">&times;</a>
+                            <a href="{% url 'cuidadores:perfil' %}" class="close">&times;</a>
                         </div>
                     </div>
                     <ul class="navigation">

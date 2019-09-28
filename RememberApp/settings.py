@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'Apps.Autenticacion',
     'Apps.Principal',
     'Apps.Cuidadores',
+    'Apps.Pacientes',
     'Apps.Blog',
+    'Apps.Actividades',
     'ckeditor',
 ]
 

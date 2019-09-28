@@ -1,0 +1,63 @@
+{% extends 'base_cuidador.html' %}
+{% load static %}
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+{% include 'alertas_cuidador.html' %}
+
+<div class="page-header">
+    <div class="row">
+        <!-- Page header, center on small screens -->
+        <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+            <i class="fa fa-edit page-header-icon"></i>&nbsp;&nbsp;Pacientes Vinculados
+        </h1>
+        <div class="col-xs-12 col-sm-8">
+            <div class="row">
+                <hr class="visible-xs no-grid-gutter-h">
+                <!-- "Create project" button, width=auto on desktops -->
+                <!-- Margin -->
+                <div class="visible-xs clearfix form-group-margin"></div>
+                <!-- Search field -->
+            </div>
+        </div>
+    </div>
+</div> <!-- / .page-header -->
+<!-- / Javascript -->
+<div class="panel">
+    <div class="panel-body">
+      <div class="table-primary">
+                <div class="table-header">
+                  <div class="table-caption">
+                    Pacientes Vinculados
+                  </div>
+                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Identificación</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for paciente in pacientes %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{paciente.nombre}}</td>
+                      <td>{{paciente.apellido}}</td>
+                      <td>{{paciente.numeroid}}</td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+                <div class="table-footer">
+									<span align="justify">Si desea eliminar un paciente por favor enviar un correo a <strong>suscripcionesremember@gmail.com</strong> indicando el motivo de la eliminación</span>
+								</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
