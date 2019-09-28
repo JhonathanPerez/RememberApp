@@ -47,6 +47,7 @@ class Paciente(models.Model):
     telefono = models.CharField('Telefono', max_length=20, null = "True")
     correo = models.EmailField('Correo', max_length=50, null = "True")
     foto = models.ImageField('foto', upload_to='pacientes')
+    cuidador_id = models.CharField('Cuidador_ID', max_length=50, null = "True")
     usuid = models.OneToOneField(User, null=True, on_delete = models.CASCADE)
 
     def __str__(self):
@@ -64,7 +65,7 @@ class Vinculaciones(models.Model):
 
 
     def __str__(self):
-        return "%s %s" % (self.nombre, self.apellido)
+        return "%s %s" % (self.nombre)
 
     class Meta:
         verbose_name_plural = "Vinculaciones"

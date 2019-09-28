@@ -1,0 +1,52 @@
+{% extends 'base_cuidador.html' %}
+{% load static %}
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    {% include 'alertas_cuidador.html' %}
+    <div class="page-header">
+        <div class="row">
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+                <i class="fa fa-edit page-header-icon"></i>
+                &nbsp;&nbsp;Listado Pacientes
+            </h1>
+        </div>
+    </div>
+    <div>
+      &nbsp;
+    </div>
+    <div class="profile-row">
+        <div class="right-col">
+            <hr class="profile-content-hr no-grid-gutter-h">
+            <div class="profile-content">
+                <div class="panel">
+                    <br><br>
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="media/clientes/lemos.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        init.push(function ()
+        {
+            $('body').addClass("page-profile");
+            $('#item_usuario').addClass("active");
+            $('#id_foto').pixelFileInput({ placeholder: 'Seleccione una imagen de perfil para el Paciente'});
+        });
+
+        window.PixelAdmin.start(init);
+    </script>
+
+    {% block scripts_crud %}
+    {% endblock %}
+{% endblock %}

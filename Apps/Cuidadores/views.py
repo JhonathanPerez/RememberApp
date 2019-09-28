@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.base import View
+from django.views.generic.base import View, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .forms import DatosPersonalesForm, OpinionesForm, RegistroPacienteForm
@@ -85,8 +85,8 @@ class Opinion(LoginRequiredMixin, View):
 class RegistroPaciente(LoginRequiredMixin, View):
     form_class = RegistroPacienteForm
     def get(self,request,*args,**kwargs):
-        form = RegistroPacienteForm()
         datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+        form = self.form_class(datos_usuario.pk)
         contexto = {
 
             'form':form,
@@ -97,7 +97,8 @@ class RegistroPaciente(LoginRequiredMixin, View):
         return render(request,'registro_paciente.html',contexto)
 
     def post(self,request,*args,**kwargs):
-        form = self.form_class(request.POST, request.FILES)
+        datos_usuario = DatosPersonales.objects.get(usuid=request.user.pk)
+        form = self.form_class(datos_usuario, request.POST, request.FILES)
         if form.is_valid():
             form.save()
             nombre_paciente = request.POST.get("nombre",)
@@ -125,3 +126,14 @@ class RegistroPaciente(LoginRequiredMixin, View):
                 'user': datos_usuario,
             }
             return render(request,'registro_paciente.html',contexto)
+
+
+class ListaPaciente(LoginRequiredMixin, View):
+
+    def get(self,request,*args,**kwargs):
+        contexto = {
+            'foto_usuario': datos_usuario.foto,
+            'user': datos_usuario,
+        }
+
+        return render(request,'lista_pacientes.html',contexto)

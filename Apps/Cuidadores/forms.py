@@ -50,6 +50,9 @@ class RegistroPacienteForm(forms.ModelForm):
         model = Paciente
         fields = "__all__"
         exclude = ('usuid',)
+        labels = {
+            'cuidador_id': _(u'')
+        }
         widgets = {
             'nombre':forms.TextInput(
                 attrs = {
@@ -99,3 +102,13 @@ class RegistroPacienteForm(forms.ModelForm):
             ),
 
         }
+
+    def __init__(self, id=None, *args, **kwargs):
+            super(RegistroPacienteForm, self).__init__(*args, **kwargs)
+
+            if id is not None:
+                self.fields['cuidador_id'].widget = forms.HiddenInput()
+                self.fields['cuidador_id'].initial = id
+
+            for field in self.fields:
+                self.fields[field].widget.attrs.update({'class': 'form-control'})
